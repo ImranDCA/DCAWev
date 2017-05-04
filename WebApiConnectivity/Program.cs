@@ -58,8 +58,9 @@ namespace WebApiConnectivity
                     httpClient.DefaultRequestHeaders.Accept.Add(
                         new MediaTypeWithQualityHeaderValue("application/json"));
 
-                    HttpResponseMessage response = await httpClient.GetAsync("WhoAmI", HttpCompletionOption.ResponseContentRead);
 
+                    HttpResponseMessage response = await httpClient.GetAsync("WhoAmI", HttpCompletionOption.ResponseContentRead);
+                    
                     //HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, )
 
                     if(response.IsSuccessStatusCode == true)

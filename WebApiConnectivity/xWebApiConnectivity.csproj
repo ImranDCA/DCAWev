@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiProvoderTest.cs" />
+    <Compile Include="ClientConfig.cs" />
     <Compile Include="ConstantKVP.cs" />
     <Compile Include="D365Client.cs">
       <AutoGen>True</AutoGen>
