@@ -72,7 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DCEntity\DCContact.cs" />
+    <Compile Include="DCEntityRepository\EntityFormatterRepository.cs" />
     <Compile Include="Model\APICallConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XrmApiProvider.cs" />
@@ -81,6 +81,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\bDtoProvider\bDtoProvider.csproj">
+      <Project>{62cc6994-7788-498f-ab1f-05ba733eb8f6}</Project>
+      <Name>bDtoProvider</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RepositoryProvider\aRepositoryProvider.csproj">
       <Project>{f60298a5-9921-47ac-b45c-d0041d02a1f6}</Project>
       <Name>aRepositoryProvider</Name>

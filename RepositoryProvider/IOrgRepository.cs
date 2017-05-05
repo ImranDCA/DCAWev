@@ -24,22 +24,14 @@ namespace RepositoryProvider
         /// <summary>
         /// Updates this instance.
         /// </summary>
-        void Update();
+        /// <param name="ent">The ent.</param>
+        void Update(IDCEntity ent);
 
         /// <summary>
         /// Deletes this instance.
         /// </summary>
-        void Delete();
-
-
-        /// <summary>
-        /// Retrieves the mudltiple entity.
-        /// </summary>
-        /// <param name="query">The query.</param>
-        /// <returns></returns>
-        IEnumerable RetrieveMudltipleEntity(QueryExpression query) ;
-
-
+        /// <param name="ent">The ent.</param>
+        void Delete(IDCEntity ent);
 
     }
 }

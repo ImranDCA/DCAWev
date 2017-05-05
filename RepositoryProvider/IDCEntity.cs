@@ -12,6 +12,6 @@ namespace RepositoryProvider
 
         string EntityPluralName { get; set; }
 
-        T Convert<T>(); 
+        Guid EntityId { get; set; }
     }
 }

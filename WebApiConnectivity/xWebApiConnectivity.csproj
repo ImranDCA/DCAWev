@@ -91,9 +91,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bXrmAPIProvider\bXrmAPIProvider.csproj">
+    <ProjectReference Include="..\bXrmAPIProvider\cXrmAPIProvider.csproj">
       <Project>{721bf267-6d04-4b7d-8882-1902a6486d27}</Project>
-      <Name>bXrmAPIProvider</Name>
+      <Name>cXrmAPIProvider</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

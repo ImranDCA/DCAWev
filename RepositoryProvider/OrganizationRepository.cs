@@ -17,11 +17,9 @@ namespace RepositoryProvider
     {
         public abstract Guid Create(IDCEntity ent);
 
-        public abstract void Delete();
-
-        public abstract IEnumerable RetrieveMudltipleEntity(QueryExpression query);
+        public abstract void Delete(IDCEntity ent);
         
-        public abstract void Update();
+        public abstract void Update(IDCEntity ent);
 
         
     }
