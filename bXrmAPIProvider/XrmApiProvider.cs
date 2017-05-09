@@ -9,11 +9,12 @@ using Microsoft.Xrm.Sdk.Query;
 using System.Collections;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
-using bXrmAPIProvider.Model;
+
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Net.Http.Headers;
+using XrmAPIProvider.Model;
 
-namespace bXrmAPIProvider
+namespace XrmAPIProvider
 {
     /// <summary>
     /// A class that implement xrm methods by querying 
@@ -21,13 +22,13 @@ namespace bXrmAPIProvider
     /// </summary>
     /// <seealso cref="RepositoryProvider.OrganizationRepository" />
     /// <seealso cref="System.IDisposable" />
-    public class XrmApiProvider : OrganizationRepository, IDisposable
+    public class XrmApiProvider : OrganizationRepository<IDCEntity>, IDisposable
     {
         #region Private variable
 
         HttpClient httpClient;
 
-        #endregion
+        #endregion        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XrmApiProvider"/> class.
@@ -90,9 +91,30 @@ namespace bXrmAPIProvider
         {
             return await httpClient.SendAsync(request);
         }
-
         #endregion
 
+
+
+        #region Internal Method
+        /// <summary>
+        /// Sends the CRM request asynchronous.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <param name="query">The query.</param>
+        /// <param name="formatted">if set to <c>true</c> [formatted].</param>
+        /// <param name="maxPageSize">Maximum size of the page.</param>
+        /// <returns></returns>
+        internal async Task<HttpResponseMessage> SendCrmRequestAsync(
+                    HttpMethod method, string query, bool formatted = false, int maxPageSize = 10)
+        {
+            HttpRequestMessage request = new HttpRequestMessage(method, query);
+            request.Headers.Add("Prefer", "odata.maxpagesize=" + maxPageSize.ToString());
+            if (formatted)
+                request.Headers.Add("Prefer",
+                    "odata.include-annotations=OData.Community.Display.V1.FormattedValue");
+            return await httpClient.SendAsync(request);
+        }
+        #endregion
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 

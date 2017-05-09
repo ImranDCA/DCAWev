@@ -13,13 +13,13 @@ namespace RepositoryProvider
     /// Organization Repository for the Interface
     /// </summary>
     /// <seealso cref="RepositoryProvider.IOrgRepository" />
-    public abstract class OrganizationRepository : IOrgRepository
+    public abstract class OrganizationRepository<T> : IOrgRepository<T> where T: IDCEntity
     {
-        public abstract Guid Create(IDCEntity ent);
+        public abstract Guid Create(T ent);
 
-        public abstract void Delete(IDCEntity ent);
+        public abstract void Delete(T ent);
         
-        public abstract void Update(IDCEntity ent);
+        public abstract void Update(T ent);
 
         
     }

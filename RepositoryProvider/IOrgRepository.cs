@@ -13,25 +13,25 @@ namespace RepositoryProvider
     /// Provide the basic organization service 
     /// </summary>
     /// <seealso cref="System.IDisposable" />
-    public interface IOrgRepository 
+    public interface IOrgRepository<T> where T: IDCEntity
     {
         /// <summary>
         /// Creates the specified ent.
         /// </summary>
         /// <param name="ent">The ent.</param>
-        Guid Create(IDCEntity ent);
+        Guid Create(T ent);
 
         /// <summary>
         /// Updates this instance.
         /// </summary>
         /// <param name="ent">The ent.</param>
-        void Update(IDCEntity ent);
+        void Update(T ent);
 
         /// <summary>
         /// Deletes this instance.
         /// </summary>
         /// <param name="ent">The ent.</param>
-        void Delete(IDCEntity ent);
+        void Delete(T ent);
 
     }
 }

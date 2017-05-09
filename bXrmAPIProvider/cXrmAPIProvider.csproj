@@ -7,8 +7,8 @@
     <ProjectGuid>{721BF267-6D04-4B7D-8882-1902A6486D27}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bXrmAPIProvider</RootNamespace>
-    <AssemblyName>bXrmAPIProvider</AssemblyName>
+    <RootNamespace>XrmAPIProvider</RootNamespace>
+    <AssemblyName>XrmAPIProvider</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -72,6 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactRepository.cs" />
+    <Compile Include="Interfaces\IContactRepository.cs" />
+    <Compile Include="Interfaces\MasterRepository.cs" />
     <Compile Include="Model\APICallConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XrmApiProvider.cs" />
@@ -89,10 +92,7 @@
       <Name>aOrgRepositoryProvider</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DCEntityRepository\" />
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

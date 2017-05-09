@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactRepositoryTests.cs" />
     <Compile Include="Model\ModelGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XrmApiProviderTests.cs" />
@@ -53,6 +54,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bDtoProvider\bDtoProvider.csproj">
+      <Project>{62cc6994-7788-498f-ab1f-05ba733eb8f6}</Project>
+      <Name>bDtoProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bXrmAPIProvider\cXrmAPIProvider.csproj">
+      <Project>{721bf267-6d04-4b7d-8882-1902a6486d27}</Project>
+      <Name>cXrmAPIProvider</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RepositoryProvider\aOrgRepositoryProvider.csproj">
+      <Project>{f60298a5-9921-47ac-b45c-d0041d02a1f6}</Project>
+      <Name>aOrgRepositoryProvider</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

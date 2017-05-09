@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace bXrmAPIProvider.Model
+namespace XrmAPIProvider.Model
 {
     internal class APICallConstants
     {
