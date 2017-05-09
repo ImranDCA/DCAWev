@@ -40,14 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.cs" />
     <Compile Include="ContactDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RepositoryProvider\aRepositoryProvider.csproj">
+    <ProjectReference Include="..\RepositoryProvider\aOrgRepositoryProvider.csproj">
       <Project>{f60298a5-9921-47ac-b45c-d0041d02a1f6}</Project>
-      <Name>aRepositoryProvider</Name>
+      <Name>aOrgRepositoryProvider</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

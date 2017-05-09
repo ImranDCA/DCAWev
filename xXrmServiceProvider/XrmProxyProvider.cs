@@ -52,34 +52,9 @@ namespace XrmServiceProvider
             throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Deletes this instance.
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public override void Delete()
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        /// <summary>
-        /// Retrieves the mudltiple entity.
-        /// </summary>
-        /// <param name="query">The query.</param>
-        /// <returns></returns>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public override IEnumerable RetrieveMudltipleEntity(QueryExpression query)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Updates this instance.
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
+       
 
         #endregion
 
@@ -115,6 +90,16 @@ namespace XrmServiceProvider
             Dispose(true);
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
+        }
+
+        public override void Delete(IDCEntity ent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Update(IDCEntity ent)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bDtoProvider
+namespace DtoProvider
 {
     public class ContactDto : IDCEntity
     {
@@ -16,6 +16,9 @@ namespace bDtoProvider
         public string EntityPluralName { get; set; }
 
         public string FirstName { get; set; }
+
+        public AccountDto AccountName { get; set; }
+
 
     }
 }

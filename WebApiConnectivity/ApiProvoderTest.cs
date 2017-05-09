@@ -1,5 +1,5 @@
 ﻿using bXrmAPIProvider;
-using bXrmAPIProvider.DCEntity;
+
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.OData.Client;
 using System;
@@ -51,9 +51,9 @@ namespace WebApiConnectivity
 
     public class modelGenerator
     {
-        public static DCContact getContact()
-        {
-            return new DCContact() { EntityLogicalName = "contact", EntityPluralName = "contacts", FirstName = "steve", LastName = "smith" };
-        }
+        //public static DCContact getContact()
+        //{
+        //    return new DCContact() { EntityLogicalName = "contact", EntityPluralName = "contacts", FirstName = "steve", LastName = "smith" };
+        //}
     }
 }

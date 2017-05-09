@@ -48,24 +48,21 @@ namespace bXrmAPIProvider
         /// <exception cref="System.NotImplementedException"></exception>
         public override Guid Create(IDCEntity ent)
         {
-            JObject test = ent.Convert<JObject>();
+            //JObject test = ent.Convert<JObject>();
+            JObject test = new JObject();
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, ent.EntityPluralName);
-            request.Content = new StringContent(ent.Convert<JObject>().ToString(), Encoding.UTF8, APICallConstants.HttpRequestHeaders.JSON_RESPONSE_TYPE);
+            //request.Content = new StringContent(ent.Convert<JObject>().ToString(), Encoding.UTF8, APICallConstants.HttpRequestHeaders.JSON_RESPONSE_TYPE);
             HttpResponseMessage response = Execute(request).Result;
             throw new NotImplementedException();
         }
 
-        public override void Delete()
+
+        public override void Delete(IDCEntity ent)
         {
             throw new NotImplementedException();
         }
 
-        public override IEnumerable RetrieveMudltipleEntity(QueryExpression query)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update()
+        public override void Update(IDCEntity ent)
         {
             throw new NotImplementedException();
         }
@@ -131,6 +128,8 @@ namespace bXrmAPIProvider
         }
 
       
+
+
         #endregion
     }
 }
