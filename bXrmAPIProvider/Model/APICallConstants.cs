@@ -22,6 +22,8 @@ namespace XrmAPIProvider.Model
             internal const string ODATA_VERSION_VALUE = "4.0";
             internal const string JSON_RESPONSE_TYPE = "application/json";
             internal const string DEFAULT_AUTHORITY_URI = "https://login.windows.net/common";
+            internal const string PREFER = "Prefer";
+            internal const string ANNOTATION_INCLUDE_ALL = "odata.include-annotations=\"*\"";
         }
 
         internal class XrmSDKMessageName

@@ -1,11 +1,14 @@
 ﻿using DtoProvider;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using XrmAPIProvider.Helper;
 using XrmAPIProvider.Interfaces;
 
 namespace XrmAPIProvider
@@ -32,8 +35,75 @@ namespace XrmAPIProvider
         {
             string ContactUri = "contacts";
             string selectColumns = "?$select=bu_referencenumber,fullname,emailaddress1,telephone1";
+            if (!string.IsNullOrEmpty(Email))
+                selectColumns += string.Format(CultureInfo.InvariantCulture, "&$filter=emailaddress1 eq '{0}'", Email);
+
             HttpResponseMessage response =  SendCrmRequestAsync(HttpMethod.Get, ContactUri + selectColumns).Result;
-            
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string body = response.Content.ReadAsStringAsync().Result;
+                JObject result = JsonConvert.DeserializeObject<JObject>(body);
+            }
+
+            else
+                throw new CrmHttpResponseException(response.Content);
+        }
+
+        public void GetContactWithFormattedValue(string Email)
+        {
+            string ContactUri = "contacts";
+            string selectColumns = "?$select=bu_referencenumber,fullname,emailaddress1,telephone1,_bu_mobilephoneprefix_value";
+            if (!string.IsNullOrEmpty(Email))
+                selectColumns += string.Format(CultureInfo.InvariantCulture, "&$filter=emailaddress1 eq '{0}'", Email);
+
+            HttpResponseMessage response = SendCrmRequestAsync(HttpMethod.Get, ContactUri + selectColumns, true).Result;
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string body = response.Content.ReadAsStringAsync().Result;
+                JObject result = JsonConvert.DeserializeObject<JObject>(body);
+            }
+
+            else
+                throw new CrmHttpResponseException(response.Content);
+        }
+
+
+        public void GetContactWithExpand(string Email)
+        {
+            string ContactUri = "contacts";
+            string selectColumns = "?$select=bu_referencenumber,fullname,emailaddress1,telephone1,_bu_mobilephoneprefix_value&$expand=bu_mobilephoneprefix($select=bu_name,bu_isocode,bu_prefix)";
+            if (!string.IsNullOrEmpty(Email))
+                selectColumns += string.Format(CultureInfo.InvariantCulture, "&$filter=emailaddress1 eq '{0}'", Email);
+
+            HttpResponseMessage response = SendCrmRequestAsync(HttpMethod.Get, ContactUri + selectColumns, true).Result;
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string body = response.Content.ReadAsStringAsync().Result;
+                JObject result = JsonConvert.DeserializeObject<JObject>(body);
+            }
+
+            else
+                throw new CrmHttpResponseException(response.Content);
+        }
+
+
+        public void GetContactWithPhonePrefixFilter(string CountriyId)
+        {
+            string ContactUri = "contacts";
+            string selectColumns = "?$select=bu_referencenumber,fullname,emailaddress1,telephone1,_bu_mobilephoneprefix_value&$expand=bu_mobilephoneprefix($select=bu_name,bu_isocode,bu_prefix)";
+
+            if (!string.IsNullOrEmpty(CountriyId))
+                selectColumns += string.Format(CultureInfo.InvariantCulture, "&$filter=bu_mobilephoneprefix/bu_countryid%20eq%20{0}", CountriyId);
+
+            HttpResponseMessage response = SendCrmRequestAsync(HttpMethod.Get, ContactUri + selectColumns, true).Result;
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string body = response.Content.ReadAsStringAsync().Result;
+                JObject result = JsonConvert.DeserializeObject<JObject>(body);
+            }
+
+            else
+                throw new CrmHttpResponseException(response.Content);
         }
 
 

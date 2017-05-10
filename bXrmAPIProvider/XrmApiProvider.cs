@@ -22,7 +22,7 @@ namespace XrmAPIProvider
     /// </summary>
     /// <seealso cref="RepositoryProvider.OrganizationRepository" />
     /// <seealso cref="System.IDisposable" />
-    public class XrmApiProvider : OrganizationRepository<IDCEntity>, IDisposable
+    public class XrmApiProvider : OrganizationRepository<IDCEntity>
     {
         #region Private variable
 
@@ -82,8 +82,10 @@ namespace XrmAPIProvider
                 new AuthenticationHeaderValue(APICallConstants.HttpRequestHeaders.BEARER, result.AccessToken);
             httpClient.DefaultRequestHeaders.Add(APICallConstants.HttpRequestHeaders.ODATA_MAX_VERSION, APICallConstants.HttpRequestHeaders.ODATA_VERSION_VALUE);
             httpClient.DefaultRequestHeaders.Add(APICallConstants.HttpRequestHeaders.ODATA_VERSION, APICallConstants.HttpRequestHeaders.ODATA_VERSION_VALUE);
-            httpClient.DefaultRequestHeaders.Accept.Add(
+            //httpClient.DefaultRequestHeaders.Add(APICallConstants.HttpRequestHeaders.PREFER, APICallConstants.HttpRequestHeaders.ANNOTATION_INCLUDE_ALL);
+            httpClient.DefaultRequestHeaders.Accept.Add( 
                 new MediaTypeWithQualityHeaderValue(APICallConstants.HttpRequestHeaders.JSON_RESPONSE_TYPE));
+
             return httpClient;            
         }
 
@@ -110,48 +112,13 @@ namespace XrmAPIProvider
             HttpRequestMessage request = new HttpRequestMessage(method, query);
             request.Headers.Add("Prefer", "odata.maxpagesize=" + maxPageSize.ToString());
             if (formatted)
-                request.Headers.Add("Prefer",
-                    "odata.include-annotations=OData.Community.Display.V1.FormattedValue");
+            {
+                //request.Headers.Add("Prefer", "odata.include-annotations=OData.Community.Display.V1.FormattedValue");
+                request.Headers.Add("Prefer", "odata.include-annotations=\"*\"");
+            }
             return await httpClient.SendAsync(request);
         }
         #endregion
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
-                disposedValue = true;
-            }
-        }
-
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~XrmApiProvider() {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
-        }
-
-      
-
-
-        #endregion
+        
     }
 }

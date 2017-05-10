@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace XrmAPIProvider.Interfaces
 {
-    public interface IContactRepository : MasterRepository<ContactDto>
+    public interface IContactRepository : IMasterRepository<ContactDto>
     {
         void GetContactWithfilter(string Email);
-     
+        void GetContactWithFormattedValue(string Email);
+        void GetContactWithExpand(string Email);
+        void GetContactWithPhonePrefixFilter(string CountriyId);
+
     }
 }

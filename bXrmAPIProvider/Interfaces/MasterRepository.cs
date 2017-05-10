@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace XrmAPIProvider.Interfaces
 {
-    public interface MasterRepository<T> where T:IDCEntity
+    public interface IMasterRepository<T> : IDisposable where T:IDCEntity
     {
         object ConvertTo(T DCEntity);
 

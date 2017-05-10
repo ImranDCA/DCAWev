@@ -1,4 +1,4 @@
-﻿using bXrmAPIProvider;
+﻿
 
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.OData.Client;

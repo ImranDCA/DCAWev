@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContactRepository.cs" />
+    <Compile Include="Helper\CrmHttpResponseException.cs" />
     <Compile Include="Interfaces\IContactRepository.cs" />
     <Compile Include="Interfaces\MasterRepository.cs" />
     <Compile Include="Model\APICallConstants.cs" />
